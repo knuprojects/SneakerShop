@@ -8,7 +8,7 @@ namespace Security.Domain.Entities
     {
         public User()
         {
-            RefreshToken = new HashSet<RefreshToken>();
+            RefreshTokens = new HashSet<RefreshToken>();
         }
 
         public int UserId { get; set; }
@@ -16,9 +16,9 @@ namespace Security.Domain.Entities
         public string Email { get; set; }
         public string Password { get; set; }
         public string Role { get; set; }
-        public TimeSpan CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
         public bool? Deleted { get; set; }
 
-        public virtual IReadOnlyCollection<RefreshToken> RefreshToken { get; set; }
+        public virtual IReadOnlyCollection<RefreshToken> RefreshTokens { get; set; }
     }
 }
