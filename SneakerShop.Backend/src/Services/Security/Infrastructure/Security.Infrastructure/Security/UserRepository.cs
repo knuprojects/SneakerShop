@@ -29,5 +29,11 @@ namespace Security.Infrastructure.Security
         {
             return await _context.User.FirstOrDefaultAsync(x => x.UserId == userId);
         }
+
+        public async Task AddAsync(User user)
+        {
+            await _context.User.AddAsync(user);
+            await _context.SaveChangesAsync();
+        }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using Security.Domain.Exceptions;
 using System;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Security.Infrastructure.Exceptions
@@ -23,36 +25,20 @@ namespace Security.Infrastructure.Exceptions
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception, exception.Message);
-                await HandleExceptionAsync(exception, context);
+                if ((exception is CustomException))
+                    await HandleExceptionAsync(context, exception);
             }
         }
 
-        private async Task HandleExceptionAsync(Exception exception, HttpContext context)
+        private Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
-            var (statusCode, error) = exception switch
-            {
-                CustomException => 
-                (StatusCodes.Status400BadRequest,
-                    new Error(exception.GetType().Name.Underscore().Replace("_exception", string.Empty), exception.Message)),
-                _ => 
-                (StatusCodes.Status500InternalServerError, new Error("error", "There was an error."))
-            };
+            var code = HttpStatusCode.BadRequest;
 
-            context.Response.StatusCode = statusCode;
-            await context.Response.WriteAsJsonAsync(error);
-        }
-    }
+            var result = JsonConvert.SerializeObject(exception.Message);
+            context.Response.ContentType = "application/json";
+            context.Response.StatusCode = (int)code;
 
-    public class Error
-    {
-        public string Code { get; set; }
-        public string Reason { get; set; }
-
-        public Error(string code, string reason)
-        {
-            Code = code;
-            Reason = reason;
+            return context.Response.WriteAsync(result);
         }
     }
 }
