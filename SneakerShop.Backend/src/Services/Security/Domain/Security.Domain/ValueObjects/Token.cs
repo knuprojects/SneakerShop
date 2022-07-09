@@ -16,7 +16,7 @@ namespace Security.Domain.ValueObjects
 
         public static implicit operator Token(string value) => new Token(value);
 
-        public static implicit operator string(Token value) => value?.Value;
+        public static implicit operator string(Token value) => value.Value;
 
         public override string ToString() => Value;
     }
