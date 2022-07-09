@@ -1,4 +1,5 @@
 ﻿using Security.Domain.Common;
+using Security.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 
@@ -12,11 +13,11 @@ namespace Security.Domain.Entities
         }
 
         public int UserId { get; set; }
-        public string Login { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string Role { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public Login Login { get; set; }
+        public Email Email { get; set; }
+        public Password Password { get; set; }
+        public Role Role { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public bool? Deleted { get; set; }
 
         public virtual IReadOnlyCollection<RefreshToken> RefreshTokens { get; set; }
