@@ -1,13 +1,15 @@
 ﻿using Catalogue.Domain.Common;
+using Catalogue.Domain.ValueObjects;
 
 namespace Catalogue.Domain.Entities
 {
     public class Sneaker : IBaseEntity
     {
-        public string Name { get; set; }
-        public decimal Price { get; set; }
-        public double Size { get; set; }
-        public string Colour { get; set; }
+        public int SneakerId { get; set; }
+        public Name Name { get; set; }
+        public Price Price { get; set; }
+        public Size Size { get; set; }
+        public Colour Colour { get; set; }
         public bool? IsFavourite { get; set; }
         public bool? Deleted { get; set; }
         public int CategoryId { get; set; }
