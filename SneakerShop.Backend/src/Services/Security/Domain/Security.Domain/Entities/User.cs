@@ -17,7 +17,7 @@ namespace Security.Domain.Entities
         public Email Email { get; set; }
         public Password Password { get; set; }
         public Role Role { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; }
         public bool? Deleted { get; set; }
 
         public virtual IReadOnlyCollection<RefreshToken> RefreshTokens { get; set; }

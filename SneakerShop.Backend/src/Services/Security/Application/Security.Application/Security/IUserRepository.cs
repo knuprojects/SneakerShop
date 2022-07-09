@@ -8,5 +8,6 @@ namespace Security.Application.Security
         Task<User> GetByEmailAsync(string email);
         Task<User> GetByLoginAsync(string login);
         Task<User> GetByIdAsync(int userId);
+        Task AddAsync(User user);
     }
 }

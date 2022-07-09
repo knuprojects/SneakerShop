@@ -1,10 +1,10 @@
 ﻿using Microsoft.IdentityModel.Tokens;
-using Security.Infrastructure.Security.Options;
+using Security.Application.Security.Options;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 
-namespace Security.Infrastructure.Security.TokenValidator
+namespace Security.Application.Security.TokenValidator
 {
     public class RefreshTokenValidator
     {
