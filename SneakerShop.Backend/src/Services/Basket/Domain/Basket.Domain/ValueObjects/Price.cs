@@ -13,5 +13,9 @@ namespace Basket.Domain.ValueObjects
 
             Value = value;
         }
+        public static implicit operator decimal(Price value) => value.Value;
+
+        public static implicit operator Price(decimal value) => new Price(value);
     }
+
 }
