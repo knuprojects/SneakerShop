@@ -8,7 +8,7 @@ namespace Security.Domain.ValueObjects
 
         public Password(string value)
         {
-            if (string.IsNullOrEmpty(value) || value.Length > 20 || value.Length < 8)
+            if (string.IsNullOrEmpty(value) || value.Length > 500 || value.Length < 8)
                 throw new InvalidPasswordException(value);
 
             Value = value;

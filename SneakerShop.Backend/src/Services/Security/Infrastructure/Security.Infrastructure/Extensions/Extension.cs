@@ -24,7 +24,7 @@ namespace Security.Infrastructure.Extensions
 
             services.AddDbContext<SecurityContext>(options =>
             {
-                options.UseSqlServer(connectionString);
+                options.UseSqlServer(connectionString, b => b.MigrationsAssembly("Security.Api"));
             });
 
             services.AddSingleton<ExceptionMiddleware>();
@@ -36,6 +36,7 @@ namespace Security.Infrastructure.Extensions
             services.AddSingleton(jwtOptions);
 
             services.AddScoped<IPasswordManager, PasswordManager>();
+            services.AddScoped<ITokenStorage, HttpContextTokenStorage>();
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IClock, Clock>();

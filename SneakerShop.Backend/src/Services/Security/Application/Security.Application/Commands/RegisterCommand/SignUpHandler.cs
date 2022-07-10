@@ -33,12 +33,12 @@ namespace Security.Application.Commands.RegisterCommand
 
             var existingLogin = await _userRepository.GetByLoginAsync(command.Login);
 
-            if (existingLogin == null)
+            if (existingLogin != null)
                 throw new LoginAlreadyExist(command.Login);
 
             var existingEmail = await _userRepository.GetByEmailAsync(command.Email);
 
-            if (existingEmail == null)
+            if (existingEmail != null)
                 throw new EmailAlreadyExist(command.Email);
 
             var securePassword = _passwordManager.Secure(password);

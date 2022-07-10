@@ -23,7 +23,7 @@ namespace Security.Infrastructure.Dal.Configurations
             builder.Property(x => x.Password)
                 .HasConversion(x => x.Value, x => new Password(x))
                 .IsRequired()
-                .HasMaxLength(20);
+                .HasMaxLength(500);
             builder.Property(x => x.Role)
                 .HasConversion(x => x.Value, x => new Role(x))
                 .IsRequired()
