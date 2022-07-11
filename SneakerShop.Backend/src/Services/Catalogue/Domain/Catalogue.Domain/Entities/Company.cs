@@ -16,6 +16,7 @@ namespace Catalogue.Domain.Entities
         public Name Name { get; set; }
         public bool? Deleted { get; set; }
         public int CategoryId { get; set; }
+        public int SneakerId { get; set; }
 
         public IReadOnlyCollection<Sneaker> Sneakers { get; set; }
         public IReadOnlyCollection<Category> Categories { get; set; }
