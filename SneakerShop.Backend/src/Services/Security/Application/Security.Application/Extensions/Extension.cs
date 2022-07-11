@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Security.Application.Abstraction;
 using Security.Application.Commands.AuthenticateCommand;
+using Security.Application.Commands.RefreshCommand;
 using Security.Application.Commands.RegisterCommand;
 using Security.Application.Security.TokenGenerators;
 using Security.Application.Security.TokenValidator;
@@ -19,6 +20,7 @@ namespace Security.Application.Extensions
             services.AddScoped<ICommand, SignUp>();
             services.AddScoped<ICommandHandler<SignIn>, SignInHandler>();
             services.AddScoped<ICommandHandler<SignUp>, SignUpHandler>();
+            services.AddScoped<ICommandHandler<Refresh>, RefreshHandler>();
 
             //var applicationAssembly = typeof(ICommandHandler<>).Assembly;
 
