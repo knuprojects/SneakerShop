@@ -9,6 +9,6 @@ namespace Security.Domain.Entities
         public Token Token { get; set; }
         public int UserId { get; set; }
 
-        public virtual User User { get; set; }
+        public virtual AppUser User { get; set; }
     }
 }

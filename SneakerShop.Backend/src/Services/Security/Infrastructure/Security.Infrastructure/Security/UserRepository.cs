@@ -15,24 +15,24 @@ namespace Security.Infrastructure.Security
             _context = context;
         }
 
-        public async Task<User> GetByEmailAsync(string email)
+        public async Task<AppUser> GetByEmailAsync(string email)
         {
-            return await _context.User.FirstOrDefaultAsync(x => x.Email == email);
+            return await _context.AppUser.FirstOrDefaultAsync(x => x.Email == email);
         }
 
-        public async Task<User> GetByLoginAsync(string login)
+        public async Task<AppUser> GetByLoginAsync(string login)
         {
-            return await _context.User.FirstOrDefaultAsync(x => x.Login == login);
+            return await _context.AppUser.FirstOrDefaultAsync(x => x.Login == login);
         }
 
-        public async Task<User> GetByIdAsync(int userId)
+        public async Task<AppUser> GetByIdAsync(int userId)
         {
-            return await _context.User.FirstOrDefaultAsync(x => x.UserId == userId);
+            return await _context.AppUser.FirstOrDefaultAsync(x => x.UserId == userId);
         }
 
-        public async Task AddAsync(User user)
+        public async Task AddAsync(AppUser user)
         {
-            await _context.User.AddAsync(user);
+            await _context.AppUser.AddAsync(user);
             await _context.SaveChangesAsync();
         }
     }

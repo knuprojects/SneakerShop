@@ -5,9 +5,9 @@ using Security.Domain.ValueObjects;
 
 namespace Security.Infrastructure.Dal.Configurations
 {
-    public class UserConfiguration : IEntityTypeConfiguration<User>
+    public class UserConfiguration : IEntityTypeConfiguration<AppUser>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<AppUser> builder)
         {
             builder.HasKey(x => x.UserId);
             builder.HasIndex(x => x.Email).IsUnique();

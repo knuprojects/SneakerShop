@@ -4,9 +4,9 @@ namespace Security.Application.Exceptions
 {
     public class UserNotFoundException : CustomException
     {
-        public User User { get; }
+        public AppUser User { get; }
 
-        public UserNotFoundException(User user) : base($"User: {user} is invalid!")
+        public UserNotFoundException(AppUser user) : base($"User: {user} is invalid!")
         {
             User = user;
         }

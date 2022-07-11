@@ -5,9 +5,9 @@ namespace Security.Application.Security
 {
     public interface IUserRepository
     {
-        Task<User> GetByEmailAsync(string email);
-        Task<User> GetByLoginAsync(string login);
-        Task<User> GetByIdAsync(int userId);
-        Task AddAsync(User user);
+        Task<AppUser> GetByEmailAsync(string email);
+        Task<AppUser> GetByLoginAsync(string login);
+        Task<AppUser> GetByIdAsync(int userId);
+        Task AddAsync(AppUser user);
     }
 }

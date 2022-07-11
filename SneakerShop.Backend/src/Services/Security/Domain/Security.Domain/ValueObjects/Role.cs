@@ -9,7 +9,7 @@ namespace Security.Domain.ValueObjects
     {
         public static IReadOnlyCollection<string> AvailableRoles { get; } = new[] { Useful.AdminRole, Useful.UserRole };
 
-        public string Value { get; }
+        public string Value { get; set; }
 
         public Role(string value)
         {
