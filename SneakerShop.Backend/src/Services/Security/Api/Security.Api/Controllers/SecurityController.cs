@@ -56,7 +56,8 @@ namespace Security.Api.Controllers
         public async Task<ActionResult<JwtDto>> Refresh(Refresh command)
         {
             await _refreshHandler.HandleAsync(command);
-            return Ok();
+            var jwt = _tokenStorage.Get();
+            return jwt;
         }
 
         [Authorize]
