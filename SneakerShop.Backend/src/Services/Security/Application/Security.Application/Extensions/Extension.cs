@@ -18,6 +18,7 @@ namespace Security.Application.Extensions
             services.AddSingleton<RefreshTokenValidator>();
             services.AddScoped<ICommand, SignIn>();
             services.AddScoped<ICommand, SignUp>();
+            services.AddScoped<ICommand, Refresh>();
             services.AddScoped<ICommandHandler<SignIn>, SignInHandler>();
             services.AddScoped<ICommandHandler<SignUp>, SignUpHandler>();
             services.AddScoped<ICommandHandler<Refresh>, RefreshHandler>();

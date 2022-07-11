@@ -5,7 +5,7 @@ namespace Security.Domain.ValueObjects
 {
     public class Email
     {
-        public string Value { get; }
+        public string Value { get; set; }
 
         public Email(string value)
         {

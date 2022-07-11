@@ -1,0 +1,35 @@
+version: '3.4'
+
+services:
+  maindb:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+
+  basketdb:
+    image: redis:alpine
+
+  security.api:
+    image: ${DOCKER_REGISTRY-}securityapi
+    build:
+      context: .
+      dockerfile: src/Services/Security/Api/Security.Api/Dockerfile
+
+  order.api:
+    image: ${DOCKER_REGISTRY-}orderapi
+    build:
+      context: .
+      dockerfile: src/Services/Order/Api/Order.Api/Dockerfile
+
+
+  catalogue.api:
+    image: ${DOCKER_REGISTRY-}catalogueapi
+    build:
+      context: .
+      dockerfile: src/Services/Catalogue/Api/Catalogue.Api/Dockerfile
+
+
+  basket.api:
+    image: ${DOCKER_REGISTRY-}basketapi
+    build:
+      context: .
+      dockerfile: src/Services/Basket/Api/Basket.Api/Dockerfile
+

@@ -23,11 +23,13 @@ namespace Security.Api.Controllers
         public SecurityController(
             ICommandHandler<SignUp> signUpHandler,
             ICommandHandler<SignIn> signInHandler,
+            ICommandHandler<Refresh> refreshHandler,
             ITokenStorage tokenStorage,
             IRefreshTokenRepository refreshTokenRepository)
         {
             _signUpHandler = signUpHandler;
             _signInHandler = signInHandler;
+            _refreshHandler = refreshHandler;
             _tokenStorage = tokenStorage;
             _refreshTokenRepository = refreshTokenRepository;
         }
@@ -53,7 +55,7 @@ namespace Security.Api.Controllers
 
         [Route(Routes.Refresh)]
         [HttpPost]
-        public async Task<ActionResult<JwtDto>> Refresh(Refresh command)
+        public async Task<ActionResult<JwtDto>> RefreshToken(Refresh command)
         {
             await _refreshHandler.HandleAsync(command);
             var jwt = _tokenStorage.Get();
@@ -62,6 +64,7 @@ namespace Security.Api.Controllers
 
         [Authorize]
         [Route(Routes.Logout)]
+        [HttpDelete]
         public async Task<IActionResult> Logout()
         {
             string rawUserId = HttpContext.User.FindFirstValue("UserId");

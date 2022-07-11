@@ -50,7 +50,7 @@ namespace Security.Application.Commands.RefreshCommand
                 throw new InvalidRefreshToken(command.Token);
 
             await _refreshTokenRepository.DeleteAsync(refreshTokenDTO.RefreshTokenId);
-            User user = await _userRepository.GetByIdAsync(refreshTokenDTO.UserId);
+            AppUser user = await _userRepository.GetByIdAsync(refreshTokenDTO.UserId);
 
             if (user == null)
                 throw new UserNotFoundException(user);
@@ -59,11 +59,6 @@ namespace Security.Application.Commands.RefreshCommand
 
             if (existingUser == null)
                 throw new NotFoundLoginException(user.Login);
-
-            bool isCorrectPassword = _passwordManager.Validate(user.Password, existingUser.Password);
-
-            if (!isCorrectPassword)
-                throw new InvalidPasswordException(user.Password);
 
             AccessToken accessToken = _accessTokenGenerator.GenerateToken(existingUser);
 

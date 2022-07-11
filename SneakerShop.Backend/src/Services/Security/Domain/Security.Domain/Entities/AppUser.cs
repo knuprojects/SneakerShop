@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace Security.Domain.Entities
 {
-    public class User : IBaseEntity
+    public class AppUser : IBaseEntity
     {
-        public User()
+        public AppUser()
         {
             RefreshTokens = new HashSet<RefreshToken>();
         }

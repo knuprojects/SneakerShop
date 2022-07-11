@@ -26,8 +26,8 @@ namespace Security.Application.Commands.RegisterCommand
 
         public async Task HandleAsync(SignUp command)
         {
-            var email = new Email(command.Email);
             var login = new Login(command.Login);
+            var email = new Email(command.Email);
             var password = new Password(command.Password);
             var role = string.IsNullOrWhiteSpace(command.Role) ? Role.User() : new Role(command.Role);
 
@@ -43,7 +43,7 @@ namespace Security.Application.Commands.RegisterCommand
 
             var securePassword = _passwordManager.Secure(password);
 
-            var user = new User
+            var user = new AppUser
             {
                 Login = login,
                 Password = securePassword,

@@ -40,11 +40,11 @@ namespace Security.Application.Security.TokenGenerators
             _tokenGenerator = tokenGenerator;
         }
 
-        public AccessToken GenerateToken(User user)
+        public AccessToken GenerateToken(AppUser user)
         {
             List<Claim> claims = new List<Claim>()
             {
-                new Claim("UserID", user.UserId.ToString()),
+                new Claim("UserId", user.UserId.ToString()),
                 new Claim("Role", user.Role.ToString())
             };
 
