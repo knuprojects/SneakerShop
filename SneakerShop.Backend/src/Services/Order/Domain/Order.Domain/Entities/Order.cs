@@ -1,6 +1,8 @@
-﻿namespace Order.Domain.Entities
+﻿using Order.Domain.Common;
+
+namespace Order.Domain.Entities
 {
-    public class Order
+    public class AppOrder : BaseAuditableEntity
     {
         public string Login { get; set; }
         public decimal TotalPrice { get; set; }

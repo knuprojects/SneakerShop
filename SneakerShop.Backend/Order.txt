@@ -1,0 +1,23 @@
+Use [Order.Api]
+
+Create Table AppOrder(
+  OrderId Int Identity(1,1) Primary Key,
+  Login Nvarchar(20) Not Null,
+  TotalPrice Float,
+  FirstName Nvarchar(30) Not Null,
+  LastName Nvarchar(30) Not Null,
+  EmailAddress Nvarchar(100) Not Null,
+  AddressLine Nvarchar(100) Not Null,
+  Country Nvarchar(100) Not Null,
+  State Nvarchar(100) Not Null,
+  ZipCode Nvarchar(100) Not Null,
+  CardName Nvarchar(100) Not Null,
+  CardNumber Nvarchar(100) Not Null,
+  Expiration Nvarchar(100) Not Null,
+  CVV Nvarchar(100) Not Null,
+  PaymentMethod Int Not Null,
+  Created Date,
+  CreatedBy Nvarchar(100) Not Null,
+  LastModified Date,
+  LastModifiedBy Nvarchar(100) Not Null
+)

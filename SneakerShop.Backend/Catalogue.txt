@@ -1,0 +1,39 @@
+Use [Catalogue.Api]
+
+Create Table Category (
+    CategoryId Int Identity(1, 1) Primary Key,
+    Name NVarchar(128) Not Null,
+    Deleted Bit
+)
+
+Create Table Company (
+    CompanyId Int Identity(1, 1) Primary Key,
+    Name NVarchar(128) Not Null,
+    Deleted Bit,
+    CategoryId Int,
+    SneakerId Int
+)
+
+Create Table Sneaker (
+    SneakerId Int Identity(1, 1) Primary Key,
+    Name NVarchar(128) Not Null,
+    Price Decimal Not Null,
+    Size Float ,
+    Colour NVarchar(128) Not Null,
+    IsFavourite Bit,
+    Deleted Bit,
+    CategoryId Int,
+    CompanyId Int
+)
+
+Alter Table Sneaker
+Add Foreign Key(CategoryId) References Category(CategoryId)
+
+Alter Table Sneaker
+Add Foreign Key(CompanyId) References Company(CompanyId)
+
+Alter Table Company
+Add Foreign Key(CategoryId) References Category(CategoryId)
+
+Alter Table Company
+Add Foreign Key(SneakerId) References Sneaker(SneakerId)
