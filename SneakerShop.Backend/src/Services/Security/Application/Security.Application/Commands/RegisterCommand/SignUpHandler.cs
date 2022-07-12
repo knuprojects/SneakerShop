@@ -69,7 +69,7 @@ namespace Security.Application.Commands.RegisterCommand
 
             await _userRepository.AddAsync(user);
 
-            AccessToken accessToken = _accessTokenGenerator.GenerateToken(existingLogin);
+            AccessToken accessToken = _accessTokenGenerator.GenerateToken(user);
 
             string refreshToken = _refreshTokenGenerator.GenerateToken();
 
