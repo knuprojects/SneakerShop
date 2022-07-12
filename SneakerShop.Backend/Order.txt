@@ -6,7 +6,7 @@ Create Table AppOrder(
   TotalPrice Float,
   FirstName Nvarchar(30) Not Null,
   LastName Nvarchar(30) Not Null,
-  EmailAddress Nvarchar(100) Not Null,
+  Email Nvarchar(100) Not Null,
   AddressLine Nvarchar(100) Not Null,
   Country Nvarchar(100) Not Null,
   State Nvarchar(100) Not Null,

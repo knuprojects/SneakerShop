@@ -81,6 +81,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Security.Api", "src\Service
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9F6570E3-64C6-4111-93C5-FD106C4EF7CE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{2BC43BC7-D686-45A1-BA53-B86963C4B7DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.Messages", "..\src\BuildingBlocks\EventBus.Messages\EventBus.Messages.csproj", "{D88A32AB-8F6C-4F04-806F-41192DF6B8B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -155,6 +159,10 @@ Global
 		{9F6570E3-64C6-4111-93C5-FD106C4EF7CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F6570E3-64C6-4111-93C5-FD106C4EF7CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F6570E3-64C6-4111-93C5-FD106C4EF7CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D88A32AB-8F6C-4F04-806F-41192DF6B8B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D88A32AB-8F6C-4F04-806F-41192DF6B8B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D88A32AB-8F6C-4F04-806F-41192DF6B8B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D88A32AB-8F6C-4F04-806F-41192DF6B8B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -197,6 +205,8 @@ Global
 		{E4B0F096-4282-4876-BB7A-BAFC5D128538} = {8515E7DD-826E-41C6-8760-7A7E288539F0}
 		{B4283EE5-1EC2-4E06-BEDF-6BF81F01779F} = {E52CEA09-6786-432C-8FDA-29BCB424B569}
 		{D8FC160F-9F8A-4136-93D7-FE43A38FFA93} = {93AF84A8-89F6-4886-93C1-7B1925562E04}
+		{2BC43BC7-D686-45A1-BA53-B86963C4B7DB} = {74714AE7-173A-4C25-9198-919A9E45C3C4}
+		{D88A32AB-8F6C-4F04-806F-41192DF6B8B7} = {2BC43BC7-D686-45A1-BA53-B86963C4B7DB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1510D114-9143-4C29-AD3B-8F3978BF0ABC}
