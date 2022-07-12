@@ -1,0 +1,21 @@
+Use [Security.Api]
+
+
+Create Table AppUser(
+  UserId Int Identity(1,1) Primary Key,
+  Login Nvarchar(20) Not Null,
+  Email Nvarchar(100) Not Null,
+  Password Nvarchar(500) Not Null,
+  Role Nvarchar(30) Not Null,
+  CreatedAt Date,
+  Deleted Bit
+)
+
+Create Table RefreshToken(
+  RefreshTokenId Int Identity(1,1) Primary Key,
+  Token Nvarchar(500) Not Null,
+  UserId Int
+)
+
+Alter Table RefreshToken
+      Add Foreign Key (UserId) References AppUser(UserID)
