@@ -50,7 +50,8 @@ namespace Security.Api.Controllers
         public async Task<ActionResult<JwtDto>> Register(SignUp command)
         {
             await _signUpHandler.HandleAsync(command);
-            return Ok();
+            var jwt = _tokenStorage.Get();
+            return jwt;
         }
 
         [Route(Routes.Refresh)]

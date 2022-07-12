@@ -1,6 +1,8 @@
 ﻿using Security.Application.Abstraction;
+using Security.Application.Dto;
 using Security.Application.Exceptions;
 using Security.Application.Security;
+using Security.Application.Security.TokenGenerators;
 using Security.Domain.Abstraction;
 using Security.Domain.Entities;
 using Security.Domain.ValueObjects;
@@ -13,15 +15,27 @@ namespace Security.Application.Commands.RegisterCommand
         private readonly IUserRepository _userRepository;
         private readonly IPasswordManager _passwordManager;
         private readonly IClock _clock;
+        private readonly AccessTokenGenerator _accessTokenGenerator;
+        private readonly RefreshTokenGenerator _refreshTokenGenerator;
+        private readonly IRefreshTokenRepository _refreshTokenRepository;
+        private readonly ITokenStorage _tokenStorage;
 
         public SignUpHandler(
             IUserRepository userRepository,
             IPasswordManager passwordManager,
-            IClock clock)
+            IClock clock,
+            AccessTokenGenerator accessTokenGenerator,
+            RefreshTokenGenerator refreshTokenGenerator,
+            IRefreshTokenRepository refreshTokenRepository,
+            ITokenStorage tokenStorage)
         {
             _userRepository = userRepository;
             _passwordManager = passwordManager;
             _clock = clock;
+            _accessTokenGenerator = accessTokenGenerator;
+            _refreshTokenGenerator = refreshTokenGenerator;
+            _refreshTokenRepository = refreshTokenRepository;
+            _tokenStorage = tokenStorage;
         }
 
         public async Task HandleAsync(SignUp command)
@@ -54,6 +68,26 @@ namespace Security.Application.Commands.RegisterCommand
             };
 
             await _userRepository.AddAsync(user);
+
+            AccessToken accessToken = _accessTokenGenerator.GenerateToken(existingLogin);
+
+            string refreshToken = _refreshTokenGenerator.GenerateToken();
+
+            RefreshToken refreshTokenDTO = new RefreshToken()
+            {
+                Token = refreshToken,
+                UserId = existingLogin.UserId
+            };
+
+            await _refreshTokenRepository.Create(refreshTokenDTO);
+
+            var result = new JwtDto()
+            {
+                AccessToken = accessToken.Value,
+                RefreshToken = refreshToken
+            };
+
+            _tokenStorage.Set(result);
         }
     }
 }
