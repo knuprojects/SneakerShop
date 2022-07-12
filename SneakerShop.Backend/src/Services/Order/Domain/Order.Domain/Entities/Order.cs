@@ -1,24 +1,25 @@
 ﻿using Order.Domain.Common;
+using Order.Domain.ValueObjects;
 
 namespace Order.Domain.Entities
 {
     public class AppOrder : BaseAuditableEntity
     {
-        public string Login { get; set; }
-        public decimal TotalPrice { get; set; }
+        public Login Login { get; set; }
+        public TotalPrice TotalPrice { get; set; }
 
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string EmailAddress { get; set; }
-        public string AddressLine { get; set; }
-        public string Country { get; set; }
-        public string State { get; set; }
-        public string ZipCode { get; set; }
+        public FirstName FirstName { get; set; }
+        public LastName LastName { get; set; }
+        public Email Email { get; set; }
+        public AddressLine AddressLine { get; set; }
+        public Country Country { get; set; }
+        public State State { get; set; }
+        public ZipCode ZipCode { get; set; }
 
-        public string CardName { get; set; }
-        public string CardNumber { get; set; }
-        public string Expiration { get; set; }
-        public string CVV { get; set; }
+        public CardName CardName { get; set; }
+        public CardNumber CardNumber { get; set; }
+        public Expiration Expiration { get; set; }
+        public CVV CVV { get; set; }
         public int PaymentMethod { get; set; }
     }
 }
