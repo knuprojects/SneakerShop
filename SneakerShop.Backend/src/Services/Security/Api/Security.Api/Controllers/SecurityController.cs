@@ -37,7 +37,7 @@ namespace Security.Api.Controllers
         [AllowAnonymous]
         [Route(Routes.Login)]
         [HttpPost]
-        public async Task<ActionResult<JwtDto>> Login(SignIn command)
+        public async Task<ActionResult<JwtDto>> Login([FromBody] SignIn command)
         {
             await _signInHandler.HandleAsync(command);
             var jwt = _tokenStorage.Get();
@@ -47,7 +47,7 @@ namespace Security.Api.Controllers
         [AllowAnonymous]
         [Route(Routes.Register)]
         [HttpPost]
-        public async Task<ActionResult<JwtDto>> Register(SignUp command)
+        public async Task<ActionResult<JwtDto>> Register([FromBody] SignUp command)
         {
             await _signUpHandler.HandleAsync(command);
             var jwt = _tokenStorage.Get();
@@ -56,7 +56,7 @@ namespace Security.Api.Controllers
 
         [Route(Routes.Refresh)]
         [HttpPost]
-        public async Task<ActionResult<JwtDto>> RefreshToken(Refresh command)
+        public async Task<ActionResult<JwtDto>> RefreshToken([FromBody] Refresh command)
         {
             await _refreshHandler.HandleAsync(command);
             var jwt = _tokenStorage.Get();
