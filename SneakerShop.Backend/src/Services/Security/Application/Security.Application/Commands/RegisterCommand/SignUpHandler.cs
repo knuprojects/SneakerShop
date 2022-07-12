@@ -76,7 +76,7 @@ namespace Security.Application.Commands.RegisterCommand
             RefreshToken refreshTokenDTO = new RefreshToken()
             {
                 Token = refreshToken,
-                UserId = existingLogin.UserId
+                UserId = user.UserId
             };
 
             await _refreshTokenRepository.Create(refreshTokenDTO);
