@@ -23,6 +23,9 @@ namespace Catalogue.Infrastructure.Dal.Configurations
             builder.Property(x => x.Colour)
                 .HasConversion(x => x.Value, x => new Colour(x))
                 .IsRequired();
+            builder.Property(x => x.PhotoUrl)
+                .HasConversion(x => x.Value, x => new PhotoUrl(x))
+                .IsRequired();
         }
     }
 }
