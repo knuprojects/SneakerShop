@@ -1,8 +1,11 @@
+using Catalogue.Application.Extensions;
+using Catalogue.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace Catalogue.Api
 {
@@ -17,6 +20,14 @@ namespace Catalogue.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddApplication();
+            services.AddInfrastructure(Configuration);
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Catalogue.Api", Version = "v1" });
+            });
+
             services.AddControllers();
         }
 
@@ -25,6 +36,8 @@ namespace Catalogue.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Catalogue.Api v1"));
             }
 
             app.UseRouting();
