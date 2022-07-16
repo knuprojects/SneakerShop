@@ -1,3 +1,4 @@
+using Basket.Application.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -18,6 +19,12 @@ namespace Basket.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = Configuration.GetValue<string>("CacheSettings:ConnectionString");
+            });
+
+            services.AddScoped<IBasketRepository, BasketRepository>();
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll", policy =>
