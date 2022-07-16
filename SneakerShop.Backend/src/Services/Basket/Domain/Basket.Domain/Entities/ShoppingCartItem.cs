@@ -1,5 +1,4 @@
-﻿using Basket.Domain.ValueObjects;
-
+﻿
 namespace Basket.Domain.Entities
 {
     public class ShoppingCartItem
