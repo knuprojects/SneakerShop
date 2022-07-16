@@ -4,7 +4,7 @@ namespace Basket.Domain.ValueObjects
 {
     public class Quantity
     {
-        public int Value { get; }
+        public int Value { get; set; }
 
         public Quantity(int value)
         {

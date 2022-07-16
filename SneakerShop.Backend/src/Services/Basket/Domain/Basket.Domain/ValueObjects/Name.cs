@@ -4,12 +4,13 @@ namespace Basket.Domain.ValueObjects
 {
     public class Name
     {
-        public string Value { get; }
+        public string Value { get; set; }
 
         public Name(string value)
         {
-            if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrWhiteSpace(value))
                 throw new InvalidNameException(value);
+
             if (value.Length > 100)
                 throw new InvalidNameException(value);
 

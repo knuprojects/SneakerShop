@@ -18,7 +18,7 @@ namespace Basket.Api.Controllers
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
-
+        // GET basket/{login}
         [HttpGet("{login}", Name = "GetBasket")]
         [ProducesResponseType(typeof(ShoppingCart), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<ShoppingCart>> GetBasket(string login)
@@ -27,6 +27,7 @@ namespace Basket.Api.Controllers
             return Ok(basket ?? new ShoppingCart(login));
         }
 
+        // POST basket
         [HttpPost]
         [ProducesResponseType(typeof(ShoppingCart), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<ShoppingCart>> UpdateBasket([FromBody] ShoppingCart basket)
@@ -34,6 +35,7 @@ namespace Basket.Api.Controllers
             return Ok(await _repository.UpdateBasketAsync(basket));
         }
 
+        // DELETE basket/{login}
         [HttpDelete("{login}", Name = "{DeleteBasket}")]
         [ProducesResponseType(typeof(void), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> DeleteBasket(string login)

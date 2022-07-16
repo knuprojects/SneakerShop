@@ -4,7 +4,7 @@ namespace Basket.Domain.ValueObjects
 {
     public class Size
     {
-        public double Value { get; }
+        public double Value { get; set; }
         public Size(double value)
         {
             if (value < 30 || value > 50 || value.Equals(null))

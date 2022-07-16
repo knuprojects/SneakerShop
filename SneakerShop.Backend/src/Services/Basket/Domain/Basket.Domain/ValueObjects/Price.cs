@@ -4,7 +4,7 @@ namespace Basket.Domain.ValueObjects
 {
     public class Price
     {
-        public decimal Value { get; }
+        public decimal Value { get; set; }
 
         public Price(decimal value)
         {

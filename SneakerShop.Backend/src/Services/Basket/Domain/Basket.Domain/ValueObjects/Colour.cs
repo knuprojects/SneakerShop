@@ -4,12 +4,13 @@ namespace Basket.Domain.ValueObjects
 {
     public class Colour
     {
-        public string Value { get; }
+        public string Value { get; set; }
 
         public Colour(string value)
         {
-            if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrWhiteSpace(value))
                 throw new InvalidColorException("value");
+
             if (value.Length > 100)
                 throw new InvalidColorException("value");
 
