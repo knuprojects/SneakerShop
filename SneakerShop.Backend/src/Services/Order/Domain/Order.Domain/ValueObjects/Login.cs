@@ -21,4 +21,3 @@ namespace Order.Domain.ValueObjects
         public override string ToString() => Value;
     }
 }
-}

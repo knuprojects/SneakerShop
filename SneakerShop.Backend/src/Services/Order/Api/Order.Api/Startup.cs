@@ -23,11 +23,6 @@ namespace Order.Api
             services.AddApplication();
             services.AddInfrastructure(Configuration);
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Order.Api", Version = "v1" });
-            });
-
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll", policy =>
@@ -37,6 +32,11 @@ namespace Order.Api
                     policy.AllowAnyMethod();
                     policy.AllowCredentials();
                 });
+            });
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Order.Api", Version = "v1" });
             });
 
             services.AddControllers();

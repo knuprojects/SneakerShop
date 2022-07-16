@@ -1,6 +1,5 @@
 ﻿using Order.Application.Commands.UpdateOrder;
 using Order.Application.Dto;
-using Order.Domain.Entities;
 
 namespace Order.Application.Mapper
 {
