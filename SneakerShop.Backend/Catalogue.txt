@@ -39,9 +39,6 @@ INSERT INTO Company(Name, Deleted)
 VALUES
 	('TestCompany', 0)
 
-INSERT INTO Company(Name, Deleted)
-VALUES
-	('SecondCompany', 0)
 
 INSERT INTO Category(Name, Deleted, CompanyId)
 VALUES
