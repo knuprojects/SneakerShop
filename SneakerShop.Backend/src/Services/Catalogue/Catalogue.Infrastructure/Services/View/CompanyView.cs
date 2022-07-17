@@ -26,7 +26,7 @@ namespace Catalogue.Infrastructure.Services.View
                     CompanyId = c.CompanyId,
                     Name = c.Name,
                     Deleted = c.Deleted,
-                    Sneakers = c.Sneakers.Where(e => e.CompanyId == i.CompanyId).ToList(),
+                    Sneakers = c.Sneakers.Where(e => e.CompanyId == c.CompanyId).ToList(),
                 }).ToListAsync();
             var data = new DataServiceMessage(true, GoodResponse.GetSuccessfully, result);
             return data;
