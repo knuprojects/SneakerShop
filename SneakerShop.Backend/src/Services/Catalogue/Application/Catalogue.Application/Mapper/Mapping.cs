@@ -1,0 +1,87 @@
+﻿using Catalogue.Application.Commands.Companies.CreateCompany;
+using Catalogue.Application.Commands.Companies.DeleteCompany;
+using Catalogue.Application.Commands.Companies.UpdateCompany;
+using Catalogue.Application.Commands.Sneakers.CreateSneaker;
+using Catalogue.Application.Commands.Sneakers.DeleteSneaker;
+using Catalogue.Application.Commands.Sneakers.UpdateSneaker;
+using Catalogue.Application.Dto;
+
+namespace Catalogue.Application.Mapper
+{
+    public static class Mapping
+    {
+        #region CompanyCommand
+        public static CreateCompanyDto CreateCommandCompany(this CreateCompanyCommand createCompanyCommand)
+        {
+            return new CreateCompanyDto
+            {
+                Name = createCompanyCommand.Name,
+                Deleted = createCompanyCommand.Deleted
+            };
+        }
+
+        public static UpDateCompanyDto UpdateCommandCompany(this UpdateCompanyCommand updateCompanyCommand)
+        {
+            return new UpDateCompanyDto
+            {
+                CompanyId = updateCompanyCommand.CompanyId,
+                Name = updateCompanyCommand.Name,
+                Deleted = updateCompanyCommand.Deleted
+            };
+        }
+
+        public static DeleteCompanyDto DeleteCommandCompany(this DeleteCompanyCommand deleteCompanyCommand)
+        {
+            return new DeleteCompanyDto
+            {
+                CompanyId = deleteCompanyCommand.CompanyId,
+                Deleted = deleteCompanyCommand.Deleted
+            };
+        }
+        #endregion
+
+        #region SneakerCommand
+        public static CreateSneakerDto CreateCommandSneaker(this CreateSneakerCommand createSneakerCommand)
+        {
+            return new CreateSneakerDto
+            {
+                Name = createSneakerCommand.Name,
+                Price = createSneakerCommand.Price,
+                Size = createSneakerCommand.Size,
+                Colour = createSneakerCommand.Colour,
+                PhotoUrl = createSneakerCommand.PhotoUrl,
+                Deleted = createSneakerCommand.Deleted,
+                CategoryId = createSneakerCommand.CategoryId,
+                CompanyId = createSneakerCommand.CompanyId
+            };
+        }
+
+        public static UpDateSneakerDto UpdateCommandSneaker(this UpdateSneakerCommand updateSneakerCommand)
+        {
+            return new UpDateSneakerDto
+            {
+                SneakerId = updateSneakerCommand.SneakerId,
+                Name = updateSneakerCommand.Name,
+                Price = updateSneakerCommand.Price,
+                Size = updateSneakerCommand.Size,
+                Colour = updateSneakerCommand.Colour,
+                PhotoUrl = updateSneakerCommand.PhotoUrl,
+                IsFavourite = updateSneakerCommand.IsFavourite,
+                Deleted = updateSneakerCommand.Deleted,
+                CategoryId = updateSneakerCommand.CategoryId,
+                CompanyId = updateSneakerCommand.CompanyId
+            };
+        }
+
+        public static DeleteSneakerDto DeleteCommandSneaker(this DeleteSneakerCommand deleteSneakerCommand)
+        {
+            return new DeleteSneakerDto
+            {
+                SneakerId = deleteSneakerCommand.SneakerId,
+                Deleted = deleteSneakerCommand.Deleted
+            };
+        }
+
+        #endregion 
+    }
+}

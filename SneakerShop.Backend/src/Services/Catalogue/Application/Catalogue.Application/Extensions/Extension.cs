@@ -1,4 +1,10 @@
 ﻿using Catalogue.Application.Abstraction;
+using Catalogue.Application.Commands.Companies.CreateCompany;
+using Catalogue.Application.Commands.Companies.DeleteCompany;
+using Catalogue.Application.Commands.Companies.UpdateCompany;
+using Catalogue.Application.Commands.Sneakers.CreateSneaker;
+using Catalogue.Application.Commands.Sneakers.DeleteSneaker;
+using Catalogue.Application.Commands.Sneakers.UpdateSneaker;
 using Catalogue.Application.Dto;
 using Catalogue.Application.Queries.Category.GetAll;
 using Catalogue.Application.Queries.Category.GetById;
@@ -25,6 +31,14 @@ namespace Catalogue.Application.Extensions
             services.AddScoped<IQueryHandler<GetSneakers, DataServiceMessage>, GetSneakersHandler>();
             services.AddScoped<IQueryHandler<GetSneakersById, DataServiceMessage>, GetSneakersByIdHandler>();
             services.AddScoped<IQueryHandler<GetSneakersByName, DataServiceMessage>, GetSneakersByNameHandler>();
+
+            services.AddScoped<ICommand, CreateSneakerCommand>();
+            services.AddScoped<ICommand, UpdateSneakerCommand>();
+            services.AddScoped<ICommand, DeleteSneakerCommand>();
+
+            services.AddScoped<ICommandHandler<CreateSneakerCommand>, CreateSneakerCommandHandler>();
+            services.AddScoped<ICommandHandler<UpdateSneakerCommand>, UpdateSneakerCommandHandler>();
+            services.AddScoped<ICommandHandler<DeleteSneakerCommand>, DeleteSneakerCommandHandler>();
             #endregion
 
             #region Company
@@ -35,6 +49,16 @@ namespace Catalogue.Application.Extensions
             services.AddScoped<IQueryHandler<GetCompanies, DataServiceMessage>, GetCompaniesHandler>();
             services.AddScoped<IQueryHandler<GetCompaniesById, DataServiceMessage>, GetCompaniesByIdHandler>();
             services.AddScoped<IQueryHandler<GetCompaniesByName, DataServiceMessage>, GetCompaniesByNameHandler>();
+
+
+            services.AddScoped<ICommand, CreateCompanyCommand>();
+            services.AddScoped<ICommand, UpdateCompanyCommand>();
+            services.AddScoped<ICommand, DeleteCompanyCommand>();
+
+            services.AddScoped<ICommandHandler<CreateCompanyCommand>, CreateCompanyCommandHandler>();
+            services.AddScoped<ICommandHandler<UpdateCompanyCommand>, UpdateCompanyCommandHandler>();
+            services.AddScoped<ICommandHandler<DeleteCompanyCommand>, DeleteCompanyCommandHandler>();
+
             #endregion
 
             #region Category

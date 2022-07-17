@@ -6,12 +6,20 @@
         public const string GetAllSneakers = "sneakers";
         public const string GetAllSneakersById = "sneaker";
         public const string GetAllSneakersByName = "sneakerByName";
+
+        public const string CreateSneaker = "createSneaker";
+        public const string UpdateSneaker = "updateSneaker";
+        public const string DeleteSneaker = "DeleteSneaker";
         #endregion
 
         #region Companies
         public const string GetAllCompanies = "companies";
         public const string GetAllCompanyById = "company";
         public const string GetAllCompanyByName = "companyByName";
+
+        public const string CreateCompany = "createCompany";
+        public const string UpdateCompany = "updateCompany";
+        public const string DeleteCompany = "DeleteCompany";
         #endregion
 
         #region Categories
