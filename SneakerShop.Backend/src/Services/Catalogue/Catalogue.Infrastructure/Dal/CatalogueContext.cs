@@ -19,10 +19,7 @@ namespace Catalogue.Infrastructure.Dal
                 .WithMany(p => p.Sneakers)
                 .HasForeignKey(d => d.CategoryId)
                 .HasConstraintName("FK_Sneakers_CategoryId");
-            });
 
-            modelBuilder.Entity<Sneaker>(entity =>
-            {
                 entity.HasOne(d => d.Company)
                 .WithMany(p => p.Sneakers)
                 .HasForeignKey(d => d.CompanyId)

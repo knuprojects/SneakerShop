@@ -14,7 +14,10 @@ namespace Catalogue.Domain.Entities
         public int CategoryId { get; set; }
         public Name Name { get; set; }
         public bool? Deleted { get; set; }
+        public int CompanyId { get; set; }
+
 
         public IReadOnlyCollection<Sneaker> Sneakers { get; set; }
+        public virtual Company Company { get; set; }
     }
 }

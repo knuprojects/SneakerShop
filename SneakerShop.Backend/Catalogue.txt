@@ -3,15 +3,14 @@ Use [Catalogue.Api]
 Create Table Category (
     CategoryId Int Identity(1, 1) Primary Key,
     Name NVarchar(128) Not Null,
-    Deleted Bit
+    Deleted Bit,
+	CompanyId Int
 )
 
 Create Table Company (
     CompanyId Int Identity(1, 1) Primary Key,
     Name NVarchar(128) Not Null,
     Deleted Bit,
-    CategoryId Int,
-    SneakerId Int
 )
 
 Create Table Sneaker (
@@ -20,6 +19,7 @@ Create Table Sneaker (
     Price Decimal Not Null,
     Size Float ,
     Colour NVarchar(128) Not Null,
+    PhotoUrl NVarchar(256) Not Null,
     IsFavourite Bit,
     Deleted Bit,
     CategoryId Int,
@@ -32,8 +32,42 @@ Add Foreign Key(CategoryId) References Category(CategoryId)
 Alter Table Sneaker
 Add Foreign Key(CompanyId) References Company(CompanyId)
 
-Alter Table Company
-Add Foreign Key(CategoryId) References Category(CategoryId)
+Alter Table Category
+Add Foreign Key(CompanyId) References Company(CompanyId)
 
-Alter Table Company
-Add Foreign Key(SneakerId) References Sneaker(SneakerId)
+INSERT INTO Company(Name, Deleted)
+VALUES
+	('TestCompany', 0)
+
+INSERT INTO Company(Name, Deleted)
+VALUES
+	('SecondCompany', 0)
+
+INSERT INTO Category(Name, Deleted, CompanyId)
+VALUES
+	('TestCategory', 0, 1)
+---------------------------------------
+---------------------------------------
+
+INSERT INTO Sneaker(Name, Price, Size, Colour, PhotoUrl, IsFavourite, Deleted, CategoryId, CompanyId)
+VALUES
+	('TestSneaker', 3000, 42, 'TestColour', 'http//TestUrlFroPhoto//Test', 0, 0, 1, 1)
+
+INSERT INTO Sneaker(Name, Price, Size, Colour, PhotoUrl, IsFavourite, Deleted, CategoryId, CompanyId)
+VALUES
+	('TestSneaker', 3000, 42, 'TestColour', 'http//TestUrlFroPhoto//Test', 0, 0, 1, 1)
+
+SELECT 
+	Category.CategoryId,
+	Category.Name,
+	Category.Deleted,
+	Company.Name
+FROM Category
+Join Company
+	ON Category.CompanyId = Company.CompanyId
+
+
+
+SELECT * FROM Category
+SELECT * FROM Company
+SELECT * FROM Sneaker
