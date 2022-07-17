@@ -1,5 +1,7 @@
-﻿using Catalogue.Application.Contracts.View;
+﻿using Catalogue.Application.Contracts.Processing;
+using Catalogue.Application.Contracts.View;
 using Catalogue.Infrastructure.Dal;
+using Catalogue.Infrastructure.Services.Proccesing;
 using Catalogue.Infrastructure.Services.View;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +24,10 @@ namespace Catalogue.Infrastructure.Extensions
             services.AddScoped<ISneakerView, SneakerView>();
             services.AddScoped<ICompanyView, CompanyView>();
             services.AddScoped<ICategoryView, CategoryView>();
+
+            services.AddScoped<ICompanyProccesing, CompanyProccesing>();
+            services.AddScoped<ICategoryProccesing, CategoryProccesing>();
+            services.AddScoped<ISneakerProccesing, SneakerProccesing>();
 
             return services;
         }

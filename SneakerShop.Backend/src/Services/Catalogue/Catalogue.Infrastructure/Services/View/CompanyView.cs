@@ -17,7 +17,7 @@ namespace Catalogue.Infrastructure.Services.View
         }
         public async Task<DataServiceMessage> GetAllCompanies()
         { 
-            var result = await _catalogueContext.Company.Join(_catalogueContext.Sneaker,
+            var result = await _catalogueContext.Company.Join(_catalogueContext.Company,
                 c => c.CompanyId,
                 i => i.CompanyId,
                 (c, i) =>

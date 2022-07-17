@@ -1,6 +1,8 @@
-﻿namespace Catalogue.Application.Dto
+﻿using Catalogue.Application.Abstraction;
+
+namespace Catalogue.Application.Commands.Sneakers.CreateSneaker
 {
-    public class CreateSneakerDto
+    public class CreateSneakerCommand : ICommand
     {
         public string Name { get; set; }
         public decimal Price { get; set; }
