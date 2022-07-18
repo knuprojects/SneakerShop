@@ -9,6 +9,8 @@ namespace Catalogue.Domain.ValueObjects
         {
             if (value <= 0 || value.Equals(null))
                 throw new InvalidPriceException(value);
+
+            Value = value;
         }
 
         public static implicit operator decimal(Price value) => value.Value;

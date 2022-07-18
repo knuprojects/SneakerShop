@@ -27,6 +27,7 @@ namespace Catalogue.Infrastructure.Services.Proccesing
                 Size = createSneakerDto.Size,
                 Colour = createSneakerDto.Colour,
                 PhotoUrl = createSneakerDto.PhotoUrl,
+                IsFavourite = createSneakerDto.IsFavourite,
                 Deleted = createSneakerDto.Deleted,
                 CategoryId = createSneakerDto.CategoryId,
                 CompanyId = createSneakerDto.CompanyId,
@@ -62,6 +63,7 @@ namespace Catalogue.Infrastructure.Services.Proccesing
 
             var newSneaker = new Sneaker
             {
+                SneakerId = upDateSneakerDto.SneakerId,
                 Name = upDateSneakerDto.Name,
                 Price = upDateSneakerDto.Price,
                 Size = upDateSneakerDto.Size,
