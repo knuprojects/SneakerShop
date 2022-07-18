@@ -8,6 +8,7 @@ using Catalogue.Application.Commands.Sneakers.CreateSneaker;
 using Catalogue.Application.Commands.Sneakers.DeleteSneaker;
 using Catalogue.Application.Commands.Sneakers.UpdateSneaker;
 using Catalogue.Application.Dto;
+using Catalogue.Domain.Entities;
 
 namespace Catalogue.Application.Mapper
 {
@@ -120,6 +121,24 @@ namespace Catalogue.Application.Mapper
             };
         }
 
+        #endregion
+
+        #region SneakerDto To Sneaker
+        public static Sneaker CreateSneakerDtoToSneaker(this CreateSneakerDto createSneakerDto)
+        {
+            return new Sneaker
+            {
+                Name = createSneakerDto.Name,
+                Price = createSneakerDto.Price,
+                Size = createSneakerDto.Size,
+                Colour = createSneakerDto.Colour,
+                PhotoUrl = createSneakerDto.PhotoUrl,
+                IsFavourite = createSneakerDto.IsFavourite,
+                Deleted = createSneakerDto.Deleted,
+                CategoryId = createSneakerDto.CategoryId,
+                CompanyId = createSneakerDto.CompanyId
+            };
+        }
         #endregion
     }
 }

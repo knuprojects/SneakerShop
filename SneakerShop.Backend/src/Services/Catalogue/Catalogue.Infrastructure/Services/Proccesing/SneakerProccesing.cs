@@ -1,5 +1,6 @@
 ﻿using Catalogue.Application.Contracts.Processing;
 using Catalogue.Application.Dto;
+using Catalogue.Application.Mapper;
 using Catalogue.Domain.Entities;
 using Catalogue.Domain.Exceptions;
 using Catalogue.Infrastructure.Dal;
@@ -20,23 +21,25 @@ namespace Catalogue.Infrastructure.Services.Proccesing
         }
         public async Task<DataServiceMessage> CreateSneakerAsync(CreateSneakerDto createSneakerDto)
         {
-            var sneaker = new Sneaker
-            {
-                Name = createSneakerDto.Name,
-                Price = createSneakerDto.Price,
-                Size = createSneakerDto.Size,
-                Colour = createSneakerDto.Colour,
-                PhotoUrl = createSneakerDto.PhotoUrl,
-                IsFavourite = createSneakerDto.IsFavourite,
-                Deleted = createSneakerDto.Deleted,
-                CategoryId = createSneakerDto.CategoryId,
-                CompanyId = createSneakerDto.CompanyId,
-            };
+            //var sneaker = new Sneaker
+            //{
+            //    Name = createSneakerDto.Name,
+            //    Price = createSneakerDto.Price,
+            //    Size = createSneakerDto.Size,
+            //    Colour = createSneakerDto.Colour,
+            //    PhotoUrl = createSneakerDto.PhotoUrl,
+            //    IsFavourite = createSneakerDto.IsFavourite,
+            //    Deleted = createSneakerDto.Deleted,
+            //    CategoryId = createSneakerDto.CategoryId,
+            //    CompanyId = createSneakerDto.CompanyId,
+            //};
 
-            await _catalogueContext.Sneaker.AddAsync(sneaker);
+            var mapper = Mapping.CreateSneakerDtoToSneaker(createSneakerDto);
+
+            await _catalogueContext.Sneaker.AddAsync(mapper);
             await _catalogueContext.SaveChangesAsync();
 
-            var data = new DataServiceMessage(true, GoodResponse.AddedSuccessfully, sneaker);
+            var data = new DataServiceMessage(true, GoodResponse.AddedSuccessfully, mapper);
             return data;
         }
 
