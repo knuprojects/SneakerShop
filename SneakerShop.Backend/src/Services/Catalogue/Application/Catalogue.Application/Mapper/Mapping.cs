@@ -53,6 +53,7 @@ namespace Catalogue.Application.Mapper
                 Size = createSneakerCommand.Size,
                 Colour = createSneakerCommand.Colour,
                 PhotoUrl = createSneakerCommand.PhotoUrl,
+                IsFavourite = createSneakerCommand.IsFavourite,
                 Deleted = createSneakerCommand.Deleted,
                 CategoryId = createSneakerCommand.CategoryId,
                 CompanyId = createSneakerCommand.CompanyId
