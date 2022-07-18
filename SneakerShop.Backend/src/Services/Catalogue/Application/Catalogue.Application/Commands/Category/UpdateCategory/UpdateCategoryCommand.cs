@@ -1,6 +1,8 @@
-﻿namespace Catalogue.Application.Dto
+﻿using Catalogue.Application.Abstraction;
+
+namespace Catalogue.Application.Commands.Category.UpdateCategory
 {
-    public class UpDateCategoryDto
+    public class UpdateCategoryCommand : ICommand
     {
         public int CategoryId { get; set; }
         public string Name { get; set; }
