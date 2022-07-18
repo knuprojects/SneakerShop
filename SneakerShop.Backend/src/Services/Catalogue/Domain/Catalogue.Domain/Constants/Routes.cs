@@ -19,13 +19,17 @@
 
         public const string CreateCompany = "createCompany";
         public const string UpdateCompany = "updateCompany";
-        public const string DeleteCompany = "DeleteCompany";
+        public const string DeleteCompany = "deleteCompany";
         #endregion
 
         #region Categories
         public const string GetAllCategories = "categories";
         public const string GetAllCategoriesById = "category";
         public const string GetAllCategoriesByName = "categoryByName";
+
+        public const string CreateCategory = "createCategory";
+        public const string UpdateCategory = "updateCategory";
+        public const string DeleteCategory = "deleteCategory";
         #endregion
 
     }

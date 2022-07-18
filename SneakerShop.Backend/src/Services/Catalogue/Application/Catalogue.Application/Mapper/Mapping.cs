@@ -1,4 +1,7 @@
-﻿using Catalogue.Application.Commands.Companies.CreateCompany;
+﻿using Catalogue.Application.Commands.Category.CreateCategory;
+using Catalogue.Application.Commands.Category.DeleteCategory;
+using Catalogue.Application.Commands.Category.UpdateCategory;
+using Catalogue.Application.Commands.Companies.CreateCompany;
 using Catalogue.Application.Commands.Companies.DeleteCompany;
 using Catalogue.Application.Commands.Companies.UpdateCompany;
 using Catalogue.Application.Commands.Sneakers.CreateSneaker;
@@ -82,6 +85,40 @@ namespace Catalogue.Application.Mapper
             };
         }
 
-        #endregion 
+        #endregion
+
+        #region CategoryCommand
+
+        public static CreateCategoryDto CreateCommandCategory(this CreateCategoryCommand createCategoryCommand)
+        {
+            return new CreateCategoryDto
+            {
+                Name = createCategoryCommand.Name,
+                Deleted = createCategoryCommand.Deleted,
+                CompanyId = createCategoryCommand.CompanyId
+            };
+        }
+
+        public static DeleteCategoryDto DeleteCommandCategory(this DeleteCategoryCommand deleteCategoryCommand)
+        {
+            return new DeleteCategoryDto
+            {
+                CategoryId = deleteCategoryCommand.CategoryId,
+                Deleted = deleteCategoryCommand.Deleted
+            };
+        }
+
+        public static UpDateCategoryDto UpdateCommandCategory(this UpdateCategoryCommand updateCategoryCommand)
+        {
+            return new UpDateCategoryDto
+            {
+                CategoryId = updateCategoryCommand.CategoryId,
+                Name = updateCategoryCommand.Name,
+                Deleted = updateCategoryCommand.Deleted,
+                CompanyId = updateCategoryCommand.CompanyId
+            };
+        }
+
+        #endregion
     }
 }

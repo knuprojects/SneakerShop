@@ -1,4 +1,7 @@
 ﻿using Catalogue.Application.Abstraction;
+using Catalogue.Application.Commands.Category.CreateCategory;
+using Catalogue.Application.Commands.Category.DeleteCategory;
+using Catalogue.Application.Commands.Category.UpdateCategory;
 using Catalogue.Application.Commands.Companies.CreateCompany;
 using Catalogue.Application.Commands.Companies.DeleteCompany;
 using Catalogue.Application.Commands.Companies.UpdateCompany;
@@ -69,6 +72,15 @@ namespace Catalogue.Application.Extensions
             services.AddScoped<IQueryHandler<GetCategories, DataServiceMessage>, GetCategoriesHandler>();
             services.AddScoped<IQueryHandler<GetCategoriesById, DataServiceMessage>, GetCategoriesByIdHandler>();
             services.AddScoped<IQueryHandler<GetCategoriesByName, DataServiceMessage>, GetCategoriesByNameHandler>();
+
+            services.AddScoped<ICommand, CreateCategoryCommand>();
+            services.AddScoped<ICommand, DeleteCategoryCommand>();
+            services.AddScoped<ICommand, UpdateCategoryCommand>();
+
+            services.AddScoped<ICommandHandler<CreateCategoryCommand>, CreateCategoryCommandHandler>();
+            services.AddScoped<ICommandHandler<DeleteCategoryCommand>, DeleteCategoryCommandHandler>();
+            services.AddScoped<ICommandHandler<UpdateCategoryCommand>, UpdateCategoryCommandHandler>();
+
             #endregion
 
             return services;
