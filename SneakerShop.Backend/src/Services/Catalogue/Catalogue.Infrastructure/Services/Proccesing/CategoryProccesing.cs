@@ -1,6 +1,6 @@
 ﻿using Catalogue.Application.Contracts.Processing;
 using Catalogue.Application.Dto;
-using Catalogue.Domain.Entities;
+using Catalogue.Application.Mapper;
 using Catalogue.Domain.Exceptions;
 using Catalogue.Infrastructure.Dal;
 using Microsoft.EntityFrameworkCore;
@@ -19,17 +19,12 @@ namespace Catalogue.Infrastructure.Services.Proccesing
 
         public async Task<DataServiceMessage> CreateCategoryAsync(CreateCategoryDto createCategoryDto)
         {
-            var category = new Category
-            {
-                Name = createCategoryDto.Name,
-                Deleted = createCategoryDto.Deleted,
-                CompanyId = createCategoryDto.CompanyId
-            };
+            var mapper = Mapping.CreateCategoryDtoToCategory(createCategoryDto);
 
-            await _catalogueContext.Category.AddAsync(category);
+            await _catalogueContext.Category.AddAsync(mapper);
             await _catalogueContext.SaveChangesAsync();
 
-            var data = new DataServiceMessage(true, GoodResponse.AddedSuccessfully, category);
+            var data = new DataServiceMessage(true, GoodResponse.AddedSuccessfully, mapper);
             return data;
         }
 
@@ -54,18 +49,12 @@ namespace Catalogue.Infrastructure.Services.Proccesing
             if (category == null)
                 throw new InvalidCategoryException(upDateCategoryDto.CategoryId);
 
-            var newCategory = new Category
-            {
-                CategoryId = upDateCategoryDto.CategoryId,
-                Name = upDateCategoryDto.Name,
-                Deleted = upDateCategoryDto.Deleted,
-                CompanyId = upDateCategoryDto.CompanyId
-            };
+            var mapper = Mapping.UpdateCategoryDtoToCategory(upDateCategoryDto);
 
-            _catalogueContext.Category.Update(newCategory);
+            _catalogueContext.Category.Update(mapper);
             await _catalogueContext.SaveChangesAsync();
 
-            var data = new DataServiceMessage(true, GoodResponse.UpdatedSuccessfully, newCategory);
+            var data = new DataServiceMessage(true, GoodResponse.UpdatedSuccessfully, mapper);
             return data;
         }
     }

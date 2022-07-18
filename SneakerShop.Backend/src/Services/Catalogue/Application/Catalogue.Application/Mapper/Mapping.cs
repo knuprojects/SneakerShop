@@ -44,6 +44,29 @@ namespace Catalogue.Application.Mapper
         }
         #endregion
 
+        #region CompanyDto To Company
+
+        public static Company CreateCompanyDtoToCompany(this CreateCompanyDto createCompanyDto)
+        {
+            return new Company
+            {
+                Name = createCompanyDto.Name,
+                Deleted = createCompanyDto.Deleted
+            };
+        }
+
+        public static Company UpdateCompanyDtoToCompany(this UpDateCompanyDto upDateCompanyDto)
+        {
+            return new Company
+            {
+                CompanyId = upDateCompanyDto.CompanyId,
+                Name = upDateCompanyDto.Name,
+                Deleted = upDateCompanyDto.Deleted
+            };
+        }
+
+        #endregion
+
         #region SneakerCommand
         public static CreateSneakerDto CreateCommandSneaker(this CreateSneakerCommand createSneakerCommand)
         {
@@ -89,6 +112,42 @@ namespace Catalogue.Application.Mapper
 
         #endregion
 
+        #region SneakerDto To Sneaker
+        public static Sneaker CreateSneakerDtoToSneaker(this CreateSneakerDto createSneakerDto)
+        {
+            return new Sneaker
+            {
+                Name = createSneakerDto.Name,
+                Price = createSneakerDto.Price,
+                Size = createSneakerDto.Size,
+                Colour = createSneakerDto.Colour,
+                PhotoUrl = createSneakerDto.PhotoUrl,
+                IsFavourite = createSneakerDto.IsFavourite,
+                Deleted = createSneakerDto.Deleted,
+                CategoryId = createSneakerDto.CategoryId,
+                CompanyId = createSneakerDto.CompanyId
+            };
+        }
+
+        public static Sneaker UpdateSneakerDtoToSneaker(this UpDateSneakerDto updateSneakerDto)
+        {
+            return new Sneaker
+            {
+                SneakerId = updateSneakerDto.SneakerId,
+                Name = updateSneakerDto.Name,
+                Price = updateSneakerDto.Price,
+                Size = updateSneakerDto.Size,
+                Colour = updateSneakerDto.Colour,
+                PhotoUrl = updateSneakerDto.PhotoUrl,
+                IsFavourite = updateSneakerDto.IsFavourite,
+                Deleted = updateSneakerDto.Deleted,
+                CategoryId = updateSneakerDto.CategoryId,
+                CompanyId = updateSneakerDto.CompanyId
+            };
+        }
+
+        #endregion
+
         #region CategoryCommand
 
         public static CreateCategoryDto CreateCommandCategory(this CreateCategoryCommand createCategoryCommand)
@@ -123,22 +182,29 @@ namespace Catalogue.Application.Mapper
 
         #endregion
 
-        #region SneakerDto To Sneaker
-        public static Sneaker CreateSneakerDtoToSneaker(this CreateSneakerDto createSneakerDto)
+        #region CategoryDto To Category
+
+        public static Category CreateCategoryDtoToCategory(this CreateCategoryDto createCategoryDto)
         {
-            return new Sneaker
+            return new Category
             {
-                Name = createSneakerDto.Name,
-                Price = createSneakerDto.Price,
-                Size = createSneakerDto.Size,
-                Colour = createSneakerDto.Colour,
-                PhotoUrl = createSneakerDto.PhotoUrl,
-                IsFavourite = createSneakerDto.IsFavourite,
-                Deleted = createSneakerDto.Deleted,
-                CategoryId = createSneakerDto.CategoryId,
-                CompanyId = createSneakerDto.CompanyId
+                Name = createCategoryDto.Name,
+                Deleted = createCategoryDto.Deleted,
+                CompanyId = createCategoryDto.CompanyId
             };
         }
+
+        public static Category UpdateCategoryDtoToCategory(this UpDateCategoryDto upDateCategoryDto)
+        {
+            return new Category
+            {
+                CategoryId = upDateCategoryDto.CategoryId,
+                Name = upDateCategoryDto.Name,
+                Deleted = upDateCategoryDto.Deleted,
+                CompanyId = upDateCategoryDto.CompanyId
+            };
+        }
+
         #endregion
     }
 }
