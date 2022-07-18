@@ -1,6 +1,6 @@
 ﻿using Catalogue.Application.Contracts.Processing;
 using Catalogue.Application.Dto;
-using Catalogue.Domain.Entities;
+using Catalogue.Application.Mapper;
 using Catalogue.Domain.Exceptions;
 using Catalogue.Infrastructure.Dal;
 using Microsoft.EntityFrameworkCore;
@@ -19,16 +19,12 @@ namespace Catalogue.Infrastructure.Services.Proccesing
 
         public async Task<DataServiceMessage> CreateCompanyAsync(CreateCompanyDto createCompanyDto)
         {
-            var company = new Company
-            {
-                Name = createCompanyDto.Name,
-                Deleted = createCompanyDto.Deleted
-            };
+            var mapper = Mapping.CreateCompanyDtoToCompany(createCompanyDto);
 
-            await _catalogueContext.Company.AddAsync(company);
+            await _catalogueContext.Company.AddAsync(mapper);
             await _catalogueContext.SaveChangesAsync();
 
-            var data = new DataServiceMessage(true, GoodResponse.AddedSuccessfully, company);
+            var data = new DataServiceMessage(true, GoodResponse.AddedSuccessfully, mapper);
             return data;
         }
 
@@ -53,16 +49,12 @@ namespace Catalogue.Infrastructure.Services.Proccesing
             if (company == null)
                 throw new InvalidCompanyException(updateCompanyDto.CompanyId);
 
-            var newCompany = new Company
-            {
-                CompanyId = updateCompanyDto.CompanyId,
-                Name = updateCompanyDto.Name,
-                Deleted = updateCompanyDto.Deleted,
-            };
-            _catalogueContext.Company.Update(newCompany);
+            var mapper = Mapping.UpdateCompanyDtoToCompany(updateCompanyDto);
+
+            _catalogueContext.Company.Update(mapper);
             await _catalogueContext.SaveChangesAsync();
 
-            var result = new DataServiceMessage(true, GoodResponse.UpdatedSuccessfully, newCompany);
+            var result = new DataServiceMessage(true, GoodResponse.UpdatedSuccessfully, mapper);
             return result;
         }
     }
