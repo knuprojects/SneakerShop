@@ -33,7 +33,7 @@ namespace Catalogue.Infrastructure.Services.Proccesing
             var category = await _catalogueContext.Category.FirstOrDefaultAsync(x => x.CategoryId == deleteCategoryDto.CategoryId);
 
             if (category == null)
-                throw new InvalidCategoryException(deleteCategoryDto.CategoryId);
+                throw new InvalidCategoryIdException(deleteCategoryDto.CategoryId);
 
             _catalogueContext.Category.Remove(category);
             await _catalogueContext.SaveChangesAsync();
@@ -47,7 +47,7 @@ namespace Catalogue.Infrastructure.Services.Proccesing
             var category = await _catalogueContext.Category.AsNoTracking().FirstOrDefaultAsync(x => x.CategoryId == upDateCategoryDto.CategoryId);
 
             if (category == null)
-                throw new InvalidCategoryException(upDateCategoryDto.CategoryId);
+                throw new InvalidCategoryIdException(upDateCategoryDto.CategoryId);
 
             var mapper = Mapping.UpdateCategoryDtoToCategory(upDateCategoryDto);
 

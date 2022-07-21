@@ -32,7 +32,7 @@ namespace Catalogue.Infrastructure.Services.Proccesing
             var sneaker = await _catalogueContext.Sneaker.FirstOrDefaultAsync(x => x.SneakerId == deleteSneakerDto.SneakerId);
 
             if (sneaker == null)
-                throw new InvalidSneakerException(deleteSneakerDto.SneakerId);
+                throw new InvalidSneakerIdException(deleteSneakerDto.SneakerId);
 
             _catalogueContext.Sneaker.Remove(sneaker);
             await _catalogueContext.SaveChangesAsync();
@@ -46,7 +46,7 @@ namespace Catalogue.Infrastructure.Services.Proccesing
             var sneaker = await _catalogueContext.Sneaker.AsNoTracking().FirstOrDefaultAsync(x => x.SneakerId == upDateSneakerDto.SneakerId);
 
             if (sneaker == null)
-                throw new InvalidSneakerException(upDateSneakerDto.SneakerId);
+                throw new InvalidSneakerIdException(upDateSneakerDto.SneakerId);
 
             var mapper = Mapping.UpdateSneakerDtoToSneaker(upDateSneakerDto);
 
