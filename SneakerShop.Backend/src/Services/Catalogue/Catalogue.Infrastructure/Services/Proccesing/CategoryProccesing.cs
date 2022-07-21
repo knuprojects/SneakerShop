@@ -1,8 +1,8 @@
 ﻿using Catalogue.Application.Contracts.Processing;
 using Catalogue.Application.Dto;
 using Catalogue.Application.Mapper;
-using Catalogue.Domain.Exceptions;
 using Catalogue.Infrastructure.Dal;
+using Catalogue.Infrastructure.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using static Catalogue.Domain.Constants.ResponseMessages;
