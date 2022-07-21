@@ -33,7 +33,7 @@ namespace Catalogue.Infrastructure.Services.Proccesing
             var company = await _catalogueContext.Company.FirstOrDefaultAsync(x => x.CompanyId == deleteCompanyDto.CompanyId);
 
             if (company == null)
-                throw new InvalidCompanyException(deleteCompanyDto.CompanyId);
+                throw new InvalidCompanyIdException(deleteCompanyDto.CompanyId);
 
             _catalogueContext.Company.Remove(company);
             await _catalogueContext.SaveChangesAsync();
@@ -47,7 +47,7 @@ namespace Catalogue.Infrastructure.Services.Proccesing
             var company = await _catalogueContext.Company.AsNoTracking().FirstOrDefaultAsync(x => x.CompanyId == updateCompanyDto.CompanyId);
 
             if (company == null)
-                throw new InvalidCompanyException(updateCompanyDto.CompanyId);
+                throw new InvalidCompanyIdException(updateCompanyDto.CompanyId);
 
             var mapper = Mapping.UpdateCompanyDtoToCompany(updateCompanyDto);
 
