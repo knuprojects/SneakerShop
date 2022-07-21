@@ -6,6 +6,7 @@ using Catalogue.Infrastructure.Services.View;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Order.Infrastructure.Exceptions.Middleware;
 
 namespace Catalogue.Infrastructure.Extensions
 {
@@ -20,6 +21,8 @@ namespace Catalogue.Infrastructure.Extensions
             {
                 options.UseSqlServer(connectionString, b => b.MigrationsAssembly("Catalogue.Api"));
             });
+
+            services.AddSingleton<ExceptionMiddleware>();
 
             services.AddScoped<ISneakerView, SneakerView>();
             services.AddScoped<ICompanyView, CompanyView>();

@@ -9,10 +9,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.26" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Order\Infrastructure\Order.Infrastructure\Order.Infrastructure.csproj" />
     <ProjectReference Include="..\Application\Catalogue.Application\Catalogue.Application.csproj" />
     <ProjectReference Include="..\Domain\Catalogue.Domain\Catalogue.Domain.csproj" />
   </ItemGroup>
