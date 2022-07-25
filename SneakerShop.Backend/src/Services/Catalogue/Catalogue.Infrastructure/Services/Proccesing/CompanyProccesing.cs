@@ -42,7 +42,7 @@ namespace Catalogue.Infrastructure.Services.Proccesing
             return result;
         }
 
-        public async Task<DataServiceMessage> UpdateCompanyAsync(UpDateCompanyDto updateCompanyDto)
+        public async Task<DataServiceMessage> UpdateCompanyAsync(UpdateCompanyDto updateCompanyDto)
         {
             var company = await _catalogueContext.Company.AsNoTracking().FirstOrDefaultAsync(x => x.CompanyId == updateCompanyDto.CompanyId);
 

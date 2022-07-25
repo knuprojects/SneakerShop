@@ -41,14 +41,14 @@ namespace Catalogue.Infrastructure.Services.Proccesing
             return result;
         }
 
-        public async Task<DataServiceMessage> UpdateSneakerAsync(UpDateSneakerDto upDateSneakerDto)
+        public async Task<DataServiceMessage> UpdateSneakerAsync(UpdateSneakerDto updateSneakerDto)
         {
-            var sneaker = await _catalogueContext.Sneaker.AsNoTracking().FirstOrDefaultAsync(x => x.SneakerId == upDateSneakerDto.SneakerId);
+            var sneaker = await _catalogueContext.Sneaker.AsNoTracking().FirstOrDefaultAsync(x => x.SneakerId == updateSneakerDto.SneakerId);
 
             if (sneaker == null)
-                throw new InvalidSneakerIdException(upDateSneakerDto.SneakerId);
+                throw new InvalidSneakerIdException(updateSneakerDto.SneakerId);
 
-            var mapper = Mapping.UpdateSneakerDtoToSneaker(upDateSneakerDto);
+            var mapper = Mapping.UpdateSneakerDtoToSneaker(updateSneakerDto);
 
             _catalogueContext.Sneaker.Update(mapper);
             await _catalogueContext.SaveChangesAsync();
