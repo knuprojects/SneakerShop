@@ -42,14 +42,14 @@ namespace Catalogue.Infrastructure.Services.Proccesing
             return data;
         }
 
-        public async Task<DataServiceMessage> UpdateCategoryAsync(UpDateCategoryDto upDateCategoryDto)
+        public async Task<DataServiceMessage> UpdateCategoryAsync(UpdateCategoryDto updateCategoryDto)
         {
-            var category = await _catalogueContext.Category.AsNoTracking().FirstOrDefaultAsync(x => x.CategoryId == upDateCategoryDto.CategoryId);
+            var category = await _catalogueContext.Category.AsNoTracking().FirstOrDefaultAsync(x => x.CategoryId == updateCategoryDto.CategoryId);
 
             if (category == null)
-                throw new InvalidCategoryIdException(upDateCategoryDto.CategoryId);
+                throw new InvalidCategoryIdException(updateCategoryDto.CategoryId);
 
-            var mapper = Mapping.UpdateCategoryDtoToCategory(upDateCategoryDto);
+            var mapper = Mapping.UpdateCategoryDtoToCategory(updateCategoryDto);
 
             _catalogueContext.Category.Update(mapper);
             await _catalogueContext.SaveChangesAsync();

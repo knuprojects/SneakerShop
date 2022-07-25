@@ -24,9 +24,9 @@ namespace Catalogue.Application.Mapper
             };
         }
 
-        public static UpDateCompanyDto UpdateCommandCompany(this UpdateCompanyCommand updateCompanyCommand)
+        public static UpdateCompanyDto UpdateCommandCompany(this UpdateCompanyCommand updateCompanyCommand)
         {
-            return new UpDateCompanyDto
+            return new UpdateCompanyDto
             {
                 CompanyId = updateCompanyCommand.CompanyId,
                 Name = updateCompanyCommand.Name,
@@ -55,13 +55,13 @@ namespace Catalogue.Application.Mapper
             };
         }
 
-        public static Company UpdateCompanyDtoToCompany(this UpDateCompanyDto upDateCompanyDto)
+        public static Company UpdateCompanyDtoToCompany(this UpdateCompanyDto updateCompanyDto)
         {
             return new Company
             {
-                CompanyId = upDateCompanyDto.CompanyId,
-                Name = upDateCompanyDto.Name,
-                Deleted = upDateCompanyDto.Deleted
+                CompanyId = updateCompanyDto.CompanyId,
+                Name = updateCompanyDto.Name,
+                Deleted = updateCompanyDto.Deleted
             };
         }
 
@@ -84,9 +84,9 @@ namespace Catalogue.Application.Mapper
             };
         }
 
-        public static UpDateSneakerDto UpdateCommandSneaker(this UpdateSneakerCommand updateSneakerCommand)
+        public static UpdateSneakerDto UpdateCommandSneaker(this UpdateSneakerCommand updateSneakerCommand)
         {
-            return new UpDateSneakerDto
+            return new UpdateSneakerDto
             {
                 SneakerId = updateSneakerCommand.SneakerId,
                 Name = updateSneakerCommand.Name,
@@ -129,7 +129,7 @@ namespace Catalogue.Application.Mapper
             };
         }
 
-        public static Sneaker UpdateSneakerDtoToSneaker(this UpDateSneakerDto updateSneakerDto)
+        public static Sneaker UpdateSneakerDtoToSneaker(this UpdateSneakerDto updateSneakerDto)
         {
             return new Sneaker
             {
@@ -169,9 +169,9 @@ namespace Catalogue.Application.Mapper
             };
         }
 
-        public static UpDateCategoryDto UpdateCommandCategory(this UpdateCategoryCommand updateCategoryCommand)
+        public static UpdateCategoryDto UpdateCommandCategory(this UpdateCategoryCommand updateCategoryCommand)
         {
-            return new UpDateCategoryDto
+            return new UpdateCategoryDto
             {
                 CategoryId = updateCategoryCommand.CategoryId,
                 Name = updateCategoryCommand.Name,
@@ -194,14 +194,14 @@ namespace Catalogue.Application.Mapper
             };
         }
 
-        public static Category UpdateCategoryDtoToCategory(this UpDateCategoryDto upDateCategoryDto)
+        public static Category UpdateCategoryDtoToCategory(this UpdateCategoryDto updateCategoryDto)
         {
             return new Category
             {
-                CategoryId = upDateCategoryDto.CategoryId,
-                Name = upDateCategoryDto.Name,
-                Deleted = upDateCategoryDto.Deleted,
-                CompanyId = upDateCategoryDto.CompanyId
+                CategoryId = updateCategoryDto.CategoryId,
+                Name = updateCategoryDto.Name,
+                Deleted = updateCategoryDto.Deleted,
+                CompanyId = updateCategoryDto.CompanyId
             };
         }
 

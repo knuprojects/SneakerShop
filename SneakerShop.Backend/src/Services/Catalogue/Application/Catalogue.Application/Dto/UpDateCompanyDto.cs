@@ -1,6 +1,6 @@
 ﻿namespace Catalogue.Application.Dto
 {
-    public class UpDateCompanyDto
+    public class UpdateCompanyDto
     {
         public int CompanyId { get; set; }
         public string Name { get; set; }
