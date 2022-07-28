@@ -1,7 +1,9 @@
 ﻿using Catalogue.Application.Contracts.Processing;
 using Catalogue.Application.Contracts.View;
+using Catalogue.Domain.Entities;
 using Catalogue.Infrastructure.Dal;
 using Catalogue.Infrastructure.Services.Proccesing;
+using Catalogue.Infrastructure.Services.Sortings;
 using Catalogue.Infrastructure.Services.View;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -24,6 +26,8 @@ namespace Catalogue.Infrastructure.Extensions
 
             services.AddSingleton<ExceptionMiddleware>();
 
+
+            services.AddScoped<ISortByFilters<Sneaker>, SortByFilters<Sneaker>>();
             services.AddScoped<ISneakerView, SneakerView>();
             services.AddScoped<ICompanyView, CompanyView>();
             services.AddScoped<ICategoryView, CategoryView>();
