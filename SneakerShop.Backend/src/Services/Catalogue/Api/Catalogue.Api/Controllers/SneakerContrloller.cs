@@ -6,6 +6,7 @@ using Catalogue.Application.Dto;
 using Catalogue.Application.Queries.Sneakers.GetAll;
 using Catalogue.Application.Queries.Sneakers.GetById;
 using Catalogue.Application.Queries.Sneakers.GetByName;
+using Catalogue.Application.Queries.Sneakers.GetSorts;
 using Catalogue.Domain.Constants;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -20,6 +21,8 @@ namespace Catalogue.Api.Controllers
         private readonly IQueryHandler<GetSneakersById, DataServiceMessage> _querySneakersByIdHandler;
         private readonly IQueryHandler<GetSneakersByName, DataServiceMessage> _querySneakersByNameHandler;
 
+        private readonly IQueryHandler<GetSortedSneakersByPrice, DataServiceMessage> _querySortedSneakersByPriceHandler;
+
         private readonly ICommandHandler<CreateSneakerCommand> _commandCreateSneakerHandler;
         private readonly ICommandHandler<UpdateSneakerCommand> _commandUpdateSneakerHandler;
         private readonly ICommandHandler<DeleteSneakerCommand> _commandDeleteSneakerHandler;
@@ -27,6 +30,7 @@ namespace Catalogue.Api.Controllers
         public SneakerContrloller(IQueryHandler<GetSneakers, DataServiceMessage> querySneakersHandler,
             IQueryHandler<GetSneakersById, DataServiceMessage> querySneakersByIdHandler,
             IQueryHandler<GetSneakersByName, DataServiceMessage> querySneakersByNameHandler,
+            IQueryHandler<GetSortedSneakersByPrice, DataServiceMessage> querySortedSneakersByPriceHandler,
             ICommandHandler<CreateSneakerCommand> commandCreateSneakerHandler,
             ICommandHandler<UpdateSneakerCommand> commandUpdateSneakerHandler,
             ICommandHandler<DeleteSneakerCommand> commandDeleteSneakerHandler
@@ -38,6 +42,7 @@ namespace Catalogue.Api.Controllers
             _commandCreateSneakerHandler = commandCreateSneakerHandler;
             _commandUpdateSneakerHandler = commandUpdateSneakerHandler;
             _commandDeleteSneakerHandler = commandDeleteSneakerHandler;
+            _querySortedSneakersByPriceHandler = querySortedSneakersByPriceHandler;
         }
 
 
@@ -62,6 +67,14 @@ namespace Catalogue.Api.Controllers
             var result = await _querySneakersByNameHandler.HandleAsync(query);
             return Ok(result);
         }
+
+        [HttpGet(Routes.GetAllSortedSneakersByPrice)]
+        public async Task<ActionResult> GetSortedSneakersByPrice([FromQuery] GetSortedSneakersByPrice query)
+        {
+            var result = await _querySortedSneakersByPriceHandler.HandleAsync(query);
+            return Ok(result);
+        }
+
         #endregion
 
         #region Post, Put, Delete Method

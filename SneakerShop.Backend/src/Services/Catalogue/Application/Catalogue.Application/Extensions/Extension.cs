@@ -18,6 +18,7 @@ using Catalogue.Application.Queries.Companies.GetByName;
 using Catalogue.Application.Queries.Sneakers.GetAll;
 using Catalogue.Application.Queries.Sneakers.GetById;
 using Catalogue.Application.Queries.Sneakers.GetByName;
+using Catalogue.Application.Queries.Sneakers.GetSorts;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Catalogue.Application.Extensions
@@ -30,10 +31,12 @@ namespace Catalogue.Application.Extensions
             services.AddScoped<IQuery<DataServiceMessage>, GetSneakers>();
             services.AddScoped<IQuery<DataServiceMessage>, GetSneakersById>();
             services.AddScoped<IQuery<DataServiceMessage>, GetSneakersByName>();
+            services.AddScoped<IQuery<DataServiceMessage>, GetSortedSneakersByPrice>();
 
             services.AddScoped<IQueryHandler<GetSneakers, DataServiceMessage>, GetSneakersHandler>();
             services.AddScoped<IQueryHandler<GetSneakersById, DataServiceMessage>, GetSneakersByIdHandler>();
             services.AddScoped<IQueryHandler<GetSneakersByName, DataServiceMessage>, GetSneakersByNameHandler>();
+            services.AddScoped<IQueryHandler<GetSortedSneakersByPrice, DataServiceMessage>, GetSortedSneakersByPriceHandler>();
 
             services.AddScoped<ICommand, CreateSneakerCommand>();
             services.AddScoped<ICommand, UpdateSneakerCommand>();
