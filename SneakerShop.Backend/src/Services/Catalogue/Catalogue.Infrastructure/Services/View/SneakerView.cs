@@ -13,10 +13,13 @@ namespace Catalogue.Infrastructure.Services.View
     public class SneakerView : ISneakerView
     {
         private readonly CatalogueContext _catalogueContext;
-        public SneakerView(CatalogueContext catalogueContext)
+        private readonly ISortByFilters<Sneaker> _sortByFilters;
+        public SneakerView(CatalogueContext catalogueContext, ISortByFilters<Sneaker> sortByFilters)
         {
             _catalogueContext = catalogueContext;
+            _sortByFilters = sortByFilters;
         }
+
         public async Task<DataServiceMessage> GetAllSneakers()
         {
             var result = await _catalogueContext.Sneaker.ToListAsync();
@@ -40,8 +43,8 @@ namespace Catalogue.Infrastructure.Services.View
         public async Task<DataServiceMessage> GetSortedSneakerByPrice(decimal minPrice, decimal maxPrice)
         {
             List<Sneaker> sneakers = await _catalogueContext.Sneaker.ToListAsync();
-            var result = DiapasoneElements.GetDiapasoneSnikers(sneakers, minPrice, maxPrice);
-            result = SwapElements.Swap(result);
+            var diapason = _sortByFilters.GetDiapasonByFilter(sneakers, minPrice, maxPrice);
+            var result = _sortByFilters.Swap(diapason);
             var data = new DataServiceMessage(true, GoodResponse.GetSuccessfully, result);
             return data;
         }

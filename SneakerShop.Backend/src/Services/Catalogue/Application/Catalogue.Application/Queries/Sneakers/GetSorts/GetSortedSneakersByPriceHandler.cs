@@ -15,7 +15,7 @@ namespace Catalogue.Application.Queries.Sneakers.GetSorts
 
         public async Task<DataServiceMessage> HandleAsync(GetSortedSneakersByPrice query)
         {
-            return await _sneakerView.GetSortedSneakerByPrice(query.minPrice, query.maxPrice);
+            return await _sneakerView.GetSortedSneakerByPrice(query.MinPrice, query.MaxPrice);
         }
     }
 }
