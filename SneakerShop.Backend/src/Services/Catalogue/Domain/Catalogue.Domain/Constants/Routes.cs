@@ -6,6 +6,7 @@
         public const string GetAllSneakers = "sneakers";
         public const string GetAllSneakersById = "sneaker";
         public const string GetAllSneakersByName = "sneakerByName";
+        public const string GetAllSortedSneakersByPrice = "sneakerSortedByPrice";
 
         public const string CreateSneaker = "createSneaker";
         public const string UpdateSneaker = "updateSneaker";

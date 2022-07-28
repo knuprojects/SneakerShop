@@ -1,4 +1,6 @@
-﻿namespace Catalogue.Domain.Common
+﻿using System;
+
+namespace Catalogue.Domain.Common
 {
     public interface IBaseEntity
     {
